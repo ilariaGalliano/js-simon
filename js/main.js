@@ -4,7 +4,6 @@
 *
 *****************/
 
-
   $(document).ready(function() {
 
     var numberSoftware = []; // dove vengono inseriti i numeri generati random
@@ -24,7 +23,7 @@
     }
     console.log(numberSoftware);
     alert('I cinque numeri generati sono : ' + numberSoftware);
-
+    document.getElementById('rand').innerHTML = 'Numeri generati: ' + numberSoftware;
 
     // chiedere 5 volte all'utente il numero
     var askNumber = 5;
@@ -43,24 +42,12 @@
         user.push(insertNumber);
         //console.log(user)
       }
+      document.getElementById('user').innerHTML = 'Numeri utente: ' + user;
     }, 30000)
-
-
-    //Una volta inseriti i 5 numeri, il software dice quanti e quali numeri sono stati ricordati.
-
-    // if (numberSoftware === user) {
-    //   console.log('i numeri corretti sono : ' + user);
-    // }
-    // else {
-    //   console.log('i numeri inseriti sono sbagliati : ' + user);
-    // }
-
-
+  //  document.getElementById('result').innerHTML = 'risultato: ' + ;
  }); // <-- end doc ready
 
   // Function numeri random
   function getRandomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
-
-document.getElementById('rand').innerHTML = 'Numeri generati: ' + numberSoftware;
