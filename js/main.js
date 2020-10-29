@@ -4,7 +4,7 @@
 *
 *****************/
 
-// In un alert esporre 5 numeri casuali diversi
+
   $(document).ready(function() {
 
     var numberSoftware = []; // dove vengono inseriti i numeri generati random
