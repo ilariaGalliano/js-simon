@@ -25,29 +25,40 @@
     alert('I cinque numeri generati sono : ' + numberSoftware);
     document.getElementById('rand').innerHTML = 'Numeri generati: ' + numberSoftware;
 
-    // chiedere 5 volte all'utente il numero
-    var askNumber = 5;
-
     // Dopo 30 secondi l'utente deve inserire i numeri dell'alert
     setTimeout(function (){
 
       // Chiedere 5 volte all'utente di inserire un numero da 1 a 50
-      for (var i = 0; i < askNumber; i++) {
 
-        var insertNumber = parseInt( prompt('inserisci un numero da 1 a 50'));
+      while (user.length < size) {
+        var insertNumber = parseInt( prompt('inserisci il ' + (user.length + 1) + ' numero'));
 
-        while (user.includes(insertNumber) || isNaN(insertNumber) ) {
-          var insertNumber = parseInt( prompt('No! inserisci un numero da 1 a 50'));
+        while (isNaN(insertNumber) ) {
+          insertNumber = parseInt( prompt('inserisci il ' + (user.length + 1) + ' numero'));
         }
-        user.push(insertNumber);
-        //console.log(user)
+        if (! user.includes(insertNumber)) {
+          user.push(insertNumber);
+        }
+        else {
+          alert('numero già inserito')
+        }
       }
+      // collezione numeri giusti
+      var remembered = [];
+      for (var i = 0; i < user.length; i++) {
+        if (numberSoftware.includes(user[i])) {
+          remembered.push(user[i])
+        }
+      }
+      // risultato
+      alert('Risultati\n' + 'lista :\n ' + numberSoftware + '\nLista Utente : \n' + user + '\nIndovinati ' + remembered.length + ' numeri\n' + remembered );
       document.getElementById('user').innerHTML = 'Numeri utente: ' + user;
-    }, 30000)
-  //  document.getElementById('result').innerHTML = 'risultato: ' + ;
- }); // <-- end doc ready
+      document.getElementById('result').innerHTML = 'Risultati' + ' lista : ' + numberSoftware + ' Lista Utente : ' + user + ' Indovinati ' + remembered.length + ' numeri: ' + remembered;
+  }, 3000)
 
-  // Function numeri random
-  function getRandomNum(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
+      }); // <-- end doc ready
+
+      // Function numeri random
+      function getRandomNum(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
